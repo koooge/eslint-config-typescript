@@ -4,6 +4,7 @@ module.exports = {
     node: true
   },
   extends: [
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'plugin:vue/essential',
     'eslint:recommended',
     require.resolve('./recommended')

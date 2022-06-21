@@ -13,7 +13,9 @@ async function lintProject (name) {
         `${projectPath}/`,
         '--ext',
         '.vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts',
-        '--no-ignore'
+        '--no-ignore',
+        '--parser-options',
+        JSON.stringify({project: `${projectPath}/tsconfig.json`})
       ],
       {
         cwd: projectPath,
@@ -30,7 +32,7 @@ test('a default project should pass lint', async () => {
 })
 
 test('should lint .ts file', async () => {
-  const { stdout } = await lintProject('ts')
+  const {stdout} = await lintProject('ts')
   expect(stdout).toMatch('@typescript-eslint/no-empty-interface')
 })
 
